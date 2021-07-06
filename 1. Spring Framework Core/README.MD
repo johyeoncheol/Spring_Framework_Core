@@ -5,3 +5,4 @@
 3. @AutoWired
 4. @Component와 컴포넌트 스캔
 5. 빈의 스코프
+6. Environment
