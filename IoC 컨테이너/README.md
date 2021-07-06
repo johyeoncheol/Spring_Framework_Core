@@ -1,4 +1,4 @@
-#  Spring_Framework_Core - 강의 정리 
+#  IoC 컨테이너 
 
 1. 스프링 IOC와 컨테이너 빈
 2. Application Context와 다양한 빈 설정
