@@ -6,3 +6,6 @@
 4. @Component와 컴포넌트 스캔
 5. 빈의 스코프
 6. Environment
+7. MessageSource
+8. ApplicationEventPublisher
+9. ResourceLoader
