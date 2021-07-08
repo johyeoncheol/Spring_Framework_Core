@@ -1,0 +1,20 @@
+# 스프링 AOP: 개념 소개
+Aspect-oriedted Programming(AOP)은 OOP를 보완하는 수단으로, 흩어진 Aspect를 모듈화 할 수 있는 프로그래밍 기법
+
+## 흩어진 관심사 (Corsscutting Concems)
+
+
+AOP를 적용
+
+## AOP 주요 개념
+- Aspect와 Target
+- Advice
+- Join point와 Pointcut
+
+## AOP 구현체
+- 자바
+  + AspectJ
+  + 스프링 AOP
+
+## AOP 적용 방법
+- 컴퍼일
