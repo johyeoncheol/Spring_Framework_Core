@@ -6,7 +6,7 @@
 
 1. 스프링 IOC
 2. Resource & Validation
-3. 데이터 
+3. 데이터 바인딩
 4. spEL
 5. 스프링 AOP
 6. NULL-safety
