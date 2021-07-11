@@ -6,6 +6,7 @@
 
 1. 스프링 IOC
 2. Resource & Validation
-3. spEL
-4. 스프링 AOP
-5. NULL-safety
+3. 데이터 
+4. spEL
+5. 스프링 AOP
+6. NULL-safety
