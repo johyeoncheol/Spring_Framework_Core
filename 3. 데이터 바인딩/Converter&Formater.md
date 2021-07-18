@@ -16,6 +16,8 @@ public class StringToEventConverter implements Converter<String, Event> {
     }
 }
 ```
+- S 타입은 String T 타입은 Event 가 됩니다.
+
 
 ## Formatter
 
@@ -43,9 +45,9 @@ public class EventFormatter implements Formatter<Event> {
 - 실제 변환 작업은 이 인터페이스를 통해서 쓰레드-세이프
 - 스프링 MVC, 빈 설정, SqEL에서 사용합니다.
 - DefaultFormattingConversionService
-  - FormatterRegistry
-  - ConversionServie
-  - 여러 기본 컴버터와 포매터 등록 해줌
+  + FormatterRegistry
+  + ConversionServie
+  + 여러 기본 컴버터와 포매터 등록 해줌
 
 - [도큐먼트 참고](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/convert/ConversionService.html)
 
@@ -72,6 +74,7 @@ public class EventConverter {
     }
 }
 ```
+- convert()라는 메소드는 오버라이딩 해서 implements 하면 되기 때문에 구현은 간단합니다.
 
 #### WebConfig
 ```
@@ -84,6 +87,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+- WebMvcConfigurer 인터페이스를 상속하여 addFormatters를 오버라이딩 해서 등록을 하면 됩니다. 등록 후에는 Controller에서 동작하게 됩니다.
 
 #### EventController
 ```
