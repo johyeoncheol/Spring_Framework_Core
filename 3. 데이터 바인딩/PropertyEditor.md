@@ -22,16 +22,21 @@ org.spirngframework.validation.DataBinder 인터페이스를 통해서 데이터
 Thread - Safe 란?
 멀티 스레드 프로그래밍에서 일반적으로, 
 어떤 함수나 변수 혹은 객체가 여러 스레드로부터 동시에 접근이 이루어져도 프로그램의 실행에 문제가 없음을 말합니다.
+
 Thread - Safe를 지키기 위한 방법
 1. Re-entrancy
 어떤 함수가 한 스레드에 의해 호출되어 실행 중일 때, 다른 스레드가 그 함수를 호출하더라도 그 결과가 각각에게 올바로 주어져야 한다.
+
 2. Thread-local storage
 공유 자원의 사용을 최대한 줄여 각각의 스레드에서만 접근 가능한 저장소들을 사용함으로써 동시 접근을 막는다.
 이 방식은 동기화 방법과 관련되어 있고, 또한 공유상태를 피할 수 없을 때 사용하는 방식이다.
+
 3. Mutual exclusion
 Thread에 lock이나 semaphore를 걸어서 공유자원에는 하나의 thread만 접근 가능하게 한다.
+
 4. Atomic operations
 데이터 변경시 atomic하게 데이터에 접근하도록 만듭니다.
+
 5. Immutable Object
 객체 생성 이후에 값을 변경할 수 없도록 만듭니다.
 
