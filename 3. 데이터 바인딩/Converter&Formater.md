@@ -16,8 +16,8 @@ public class StringToEventConverter implements Converter<String, Event> {
     }
 }
 ```
-- S 타입은 String T 타입은 Event 가 됩니다.
 
+- S 타입은 String T 타입은 Event 가 됩니다.
 
 ## Formatter
 
@@ -30,7 +30,7 @@ public class StringToEventConverter implements Converter<String, Event> {
 public class EventFormatter implements Formatter<Event> {
 
     @Override
-    public Event parse(String text, Locale locale) throws ParseException {     
+    public Event parse(String text, Locale locale) throws ParseException {
         return new Event(Integer.parseInt(text));
     }
 
@@ -40,25 +40,29 @@ public class EventFormatter implements Formatter<Event> {
     }
 }
 ```
+
 ## ConversionServie
 
-- 실제 변환 작업은 이 인터페이스를 통해서 쓰레드-세이프
-- 스프링 MVC, 빈 설정, SqEL에서 사용합니다.
+- 실제 변환 작업은 이 인터페이스를 통해서 쓰레드-세이프하게 만들어줍니다.
+- 스프링 MVC, 빈 설정, SpEL에서 사용합니다.
 - DefaultFormattingConversionService
-  + FormatterRegistry
-  + ConversionServie
-  + 여러 기본 컴버터와 포매터 등록 해줌
+
+  - FormatterRegistry
+  - ConversionServie
+  - 여러 기본 컴버터와 포매터 등록 해줌
 
 - [도큐먼트 참고](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/convert/ConversionService.html)
 
-
 ## 관련 코드 정리
+
 ### Converter 등록하기
 
 #### EventConverter
+
 ```
 public class EventConverter {
 
+    //String -> Event
     public static class StringToEventConverter implements Converter<String, Event> {
         @Override
         public Event convert(String source) {
@@ -66,6 +70,7 @@ public class EventConverter {
         }
     }
 
+    //Event -> String
     public static class EventToStringConverter implements Converter<Event, String> {
         @Override
         public String convert(Event source) {
@@ -74,9 +79,11 @@ public class EventConverter {
     }
 }
 ```
+
 - convert()라는 메소드는 오버라이딩 해서 implements 하면 되기 때문에 구현은 간단합니다.
 
 #### WebConfig
+
 ```
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -87,9 +94,11 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
 - WebMvcConfigurer 인터페이스를 상속하여 addFormatters를 오버라이딩 해서 등록을 하면 됩니다. 등록 후에는 Controller에서 동작하게 됩니다.
 
 #### EventController
+
 ```
 @RestController
 public class EventController {
@@ -102,6 +111,7 @@ public class EventController {
 ```
 
 #### EventControllerTest
+
 ```
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -122,14 +132,17 @@ public class EventControllerTest {
 ### Formatter 등록하기
 
 #### EventFormatter
+
 ```
 public class EventFormatter implements Formatter<Event> {
 
+    //String -> Event
     @Override
     public Event parse(String text, Locale locale) throws ParseException {
         return new Event(Integer.parseInt(text));
     }
 
+    // Event -> String
     @Override
     public String print(Event event, Locale locale) {
         return event.getId().toString();
@@ -138,6 +151,7 @@ public class EventFormatter implements Formatter<Event> {
 ```
 
 #### WebConfig
+
 ```
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -155,6 +169,7 @@ public class WebConfig implements WebMvcConfigurer {
 - WebConfig.java 삭제후 Formatter 또는 Converter를 빈으로 등록만 해주면 자동으로 사용 가능합니다.
 
 #### EventConverter
+
 ```
 public class EventConverter {
     @Component
@@ -176,6 +191,7 @@ public class EventConverter {
 ```
 
 #### EventFormatter
+
 ```
 @Component
 public class EventFormatter implements Formatter<Event> {
@@ -193,6 +209,7 @@ public class EventFormatter implements Formatter<Event> {
 ```
 
 ### @WebMvcTest
+
 ```
 @RunWith(SpringRunner.class)
 @WebMvcTest({
@@ -213,6 +230,7 @@ public class EventControllerTest {
 ```
 
 ### 등록된 Convert 전부 확인 방법
+
 ```
 @Component
 public class AppRunner implements ApplicationRunner {
