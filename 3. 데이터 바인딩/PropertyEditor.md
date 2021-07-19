@@ -24,6 +24,8 @@ Thread - Safe 란?
 
 ```
 
+<center><img src="../Image/thread-safe.PNG" style="zoom:80%;" /></center>
+
 #### Event 객체
 
 ```
