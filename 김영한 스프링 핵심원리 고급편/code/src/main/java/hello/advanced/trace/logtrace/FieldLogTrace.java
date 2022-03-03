@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
 public class FieldLogTrace implements LogTrace{
 
     private static final String START_PREFIX = "-->";
