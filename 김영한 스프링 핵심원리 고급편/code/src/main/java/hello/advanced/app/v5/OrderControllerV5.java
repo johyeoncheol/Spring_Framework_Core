@@ -1,6 +1,7 @@
 package hello.advanced.app.v5;
 
 
+import hello.advanced.trace.callback.TraceCallback;
 import hello.advanced.trace.callback.TraceTemplate;
 import hello.advanced.trace.logtrace.LogTrace;
 import hello.advanced.trace.template.AbstractTemplate;
@@ -23,13 +24,12 @@ public class OrderControllerV5 {
 
     @GetMapping("/v5/request")
     public String request(String itemId){
-        AbstractTemplate<String> template = new AbstractTemplate<>(trace) {
+        return template.execute("OrderController.request()", new TraceCallback<String>() {
             @Override
-            protected String call() {
+            public String call() {
                 orderService.orderItem(itemId);
                 return "ok";
             }
-        };
-        return template.execute("OrderControllerV5.request()");
+        });
     }
 }
