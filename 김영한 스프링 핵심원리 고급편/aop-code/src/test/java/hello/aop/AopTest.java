@@ -1,8 +1,8 @@
 package hello.aop;
 
+import hello.aop.member.aop.AspectV6Advice;
 import hello.aop.order.OrderRepository;
 import hello.aop.order.OrderService;
-import hello.aop.order.aop.*;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package hello.aop.order.aop;
+package hello.aop.member.aop;
 
 import org.aspectj.lang.annotation.Pointcut;
 

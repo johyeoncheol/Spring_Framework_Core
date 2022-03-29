@@ -1,4 +1,4 @@
- package hello.aop.order.aop;
+ package hello.aop.member.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -29,22 +29,22 @@ import org.aspectj.lang.annotation.*;
 //         }
 //     }
 
-     @Before("hello.aop.order.aop.Pointcuts.orderAndService()")
+     @Before("hello.aop.member.aop.Pointcuts.orderAndService()")
      public  void doBefore(JoinPoint joinPoint){
         log.info("[before] {}",joinPoint.getSignature());
      }
 
-     @AfterReturning(value="hello.aop.order.aop.Pointcuts.orderAndService()",returning = "result")
+     @AfterReturning(value="hello.aop.member.aop.Pointcuts.orderAndService()",returning = "result")
      public void doReturn(JoinPoint joinPoint, Object result){
          log.info("[return] {} return={}",joinPoint.getSignature(),result);
      }
 
-     @AfterThrowing(value="hello.aop.order.aop.Pointcuts.orderAndService()", throwing="ex")
+     @AfterThrowing(value="hello.aop.member.aop.Pointcuts.orderAndService()", throwing="ex")
      public void doThrowing(JoinPoint joinPoint, Exception ex){
         log.info("[ex] {} message={}",ex);
      }
 
-     @After(value="hello.aop.order.aop.Pointcuts.orderAndService()")
+     @After(value="hello.aop.member.aop.Pointcuts.orderAndService()")
      public void doAfter(JoinPoint joinPoint){
          log.info("[after] {} message={}",joinPoint.getSignature());
      }
