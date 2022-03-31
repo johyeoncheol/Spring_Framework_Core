@@ -27,6 +27,13 @@ public class WithinTest {
 
     @Test
     void withinStar(){
-        pointcut.setExpression("within(hello.aop.member.");
+        pointcut.setExpression("within(hello.aop.member.*Service*");
+        assertThat(pointcut.matches(helloMethod,MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    void withinSubPackage(){
+        pointcut.setExpression("within(hello.aop..*)");
+        assertThat(pointcut.matches(helloMethod,MemberServiceImpl.class)).isTrue();
     }
 }
