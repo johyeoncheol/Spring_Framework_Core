@@ -18,7 +18,7 @@ public class CallServiceV1 {
 
     public void external(){
         log.info("call external");
-        internal();
+        callServiceV1.internal();
     }
 
     public void internal(){
